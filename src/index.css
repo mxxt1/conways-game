@@ -7,7 +7,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.row {
+  height: 10px;
 }
+
+.cell {
+  background-color: gray;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  border: solid 1.5px black;
+}
+
+.cell:hover {
+  background-color: whitesmoke;
+} 
