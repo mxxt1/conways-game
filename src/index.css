@@ -12,7 +12,7 @@ body {
 }
 
 .cell {
-  background-color: gray;
+  background-color: black;
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -22,4 +22,8 @@ body {
 
 .cell:hover {
   background-color: whitesmoke;
-} 
+}
+
+.grid {
+  text-align: center;
+}

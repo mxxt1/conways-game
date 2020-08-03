@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
+import { updateArr } from './gameLogic';
 
 class Grid extends Component {
 
-  defaultBoard = () => {
-    const alive = 1;
-    const dead = 0;
-    const gridSize = 50;
-
-    return Array(gridSize).fill().map(() => Array(gridSize).fill(dead));
+  switchCell = (cell, x, y) => {
+    const { grid } = this.props;
+    const row = updateArr(grid[y], x, cell ? 0 : 1);
+    const newgrid = updateArr(grid, y, row);
+    this.props.onChange(newgrid);
   }
 
-  newboard = this.defaultBoard()
-
-  gridCell = (cell, x, y) => {
-    return (<div key={x} className='cell' />);
+  showCell = (cell, x, y) => {
+    return (
+      <div key={x}
+        className='cell'
+        onMouseDown={() => this.switchCell(cell, x, y)}
+        style={{ backgroundColor: cell ? 'white' : null }}
+      />
+    );
   }
 
-  gridRow = (row, y) => (
+  showRow = (row, y) => (
     <div className='row' key={y}>
-      {row.map((cell, x) => this.gridCell(cell, x, y))}
+      {row.map((cell, x) => this.showCell(cell, x, y))}
     </div>
   )
 
   render() {
     return (
-      <div className='game-grid'>
-        {this.newboard.map((row, y) => this.gridRow(row, y))}
+      <div className='grid'>
+        {this.props.grid.map((row, y) => this.showRow(row, y))}
       </div>
     );
   }

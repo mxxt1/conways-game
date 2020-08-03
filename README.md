@@ -176,7 +176,7 @@ iOS example, could also inspire mobile web.
 
 ### Desktop/Tablet
 
-![wireframe](wireframes/wireframe_1.png)
+![wireframe](wireframes`/wireframe_1.png)
 
 
 ## Code and Repo Quality

@@ -1,56 +1,71 @@
 import React, { Component } from 'react';
 import Grid from './Grid';
 import Buttons from './Buttons';
-import { newGrid } from '../gameLogic';
+import Presets from './Presets';
+import {gliderData} from './gliderData'
+import { speed, newGrid, newGeneration, random } from './gameLogic';
 
 class Game extends Component {
 
   state = {
-    grid: "",
+    grid: gliderData(''),
     generation: 0,
     running: false,
   }
 
-  updateState = (grid, generation) => this.setState({
+  changeState = (grid, generation) => this.setState({
     grid: grid,
     generation: generation,
   });
 
+  onChange = grid => {
+    if (this.state.running === true){
+      this.changeState(grid, this.state.generation + 1);
+    } else if (this.state.running === false && this.state.generation === 0) {
+      this.changeState(grid, this.state.generation);
+    } else {
+      this.changeState(grid,this.state.generation+1)
+    }
+  } 
+
+  onClear = () => this.changeState(newGrid(), 0);
+
+  onRandom = () => this.changeState(random(this.state.grid), 0);
+
+  onPresetSelect = preset => this.changeState(gliderData(preset), 0);
+
+  onNext = () => {
+    this.onChange(newGeneration(this.state.grid));
+  } 
+
   onStart = () => {
-    this.setState({running:true})
-    console.log(this.state.running)
+    this.setState({ running: true });
+    this.interval = setInterval(() => this.onNext(), speed);
   }
 
   onStop = () => {
     this.setState({ running: false });
-    console.log(this.state.running)
-    // clearInterval(this.interval);
+    clearInterval(this.interval);
   }
-
-  onChange = grid => {
-      this.updateState(grid, this.state.generation + 1);
-  }
-
-  onClear = () => {
-      this.updateState(newGrid(),0)
-  }
-
-
 
   render() {
-    const { board, running } = this.state;
+    const { grid, running } = this.state;
     return (
       <div>
         <Buttons
           clear={this.onClear}
           next={this.onNext}
-          start={this.onStart}
+          play={this.onStart}
           stop={this.onStop}
-          randomize={this.onRandomize}
+          random={this.onRandom}
           running={running}
         />
-        <p className="generation">Generation: {this.state.generation}</p>
-        <Grid board={board} onChange={this.onChange} />
+        <Presets
+          load={this.onPresetSelect}
+          running={running}
+        />
+        <p style={{textAlign: "center"}}>Generation: {this.state.generation}</p>
+        <Grid grid={grid} onChange={this.onChange} />
         
         
       </div>
