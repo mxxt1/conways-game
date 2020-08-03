@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import {Button} from 'semantic-ui-react';
 
 const Buttons = (props) => (
   <div style={{textAlign: "center"}}>
@@ -12,7 +12,7 @@ const Buttons = (props) => (
       onClick={props.random} disabled={props.running}
     />
     
-    <Button content='Next Gen' icon='right arrow' labelPosition='right' onClick={props.next} />
+    <Button content='Next' icon='right arrow' labelPosition='right' onClick={props.next} />
     
   </div>
 );

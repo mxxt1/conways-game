@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { alive, newGrid } from './gameLogic';
 import { Dropdown, Button } from 'semantic-ui-react';
 
 const options = [

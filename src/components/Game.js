@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Grid from './Grid';
 import Buttons from './Buttons';
 import Presets from './Presets';
 import {gliderData} from './gliderData'
-import { speed, newGrid, newGeneration, random } from './gameLogic';
+import {speed,newGrid,newGeneration,random } from './gameLogic';
 
 class Game extends Component {
 

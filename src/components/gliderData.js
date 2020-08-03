@@ -1,8 +1,8 @@
-import { alive, newGrid } from './gameLogic';
+import { alive,newGrid } from './gameLogic';
 
-export const gliderData = pat => {
+export const gliderData = preset => {
     let new_grid = newGrid();
-    switch (pat) {
+    switch (preset) {
         case 'glider':
             return glider(new_grid);
         case 'gliderGun':
