@@ -8,16 +8,16 @@ body {
 }
 
 .row {
-  height: 10px;
+  height: 15px;
 }
 
 .cell {
   background-color: black;
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   cursor: pointer;
-  border: solid 1.5px black;
+  border: solid .5px gray;
 }
 
 .cell:hover {

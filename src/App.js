@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Game from './components/Game';
-import { Divider } from 'semantic-ui-react';
 
 
 class App extends Component {
@@ -10,7 +9,6 @@ class App extends Component {
       <div>
         <h1 style={{color: "black", padding: "15px 0 12px 0", margin: "0 auto", textAlign: "center"}}>Conway's Game of Life</h1> 
         <Game />
-        <Divider />
 
         <div style={{ width: "50%", margin: "0 auto", marginBottom: "10%"}}>
           <h2 style={{color: "black", padding: "15px 0 12px 0", margin: "0 auto", textAlign: "center"}}>Rules</h2>

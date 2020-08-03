@@ -36,6 +36,7 @@ class Game extends Component {
 
   onNext = () => {
     this.onChange(newGeneration(this.state.grid));
+    this.setState({generation: this.state.generation+1})
   } 
 
   onStart = () => {
